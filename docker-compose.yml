@@ -1,0 +1,18 @@
+version: '2'
+services:
+  rpmbuild:
+    build:
+      context: containers/rpmbuild
+      args:
+        - USER=amatsus
+        - UID=10003
+        - DIST=el7.bit
+    image: amatsus/rpmbuild:el7
+    volumes:
+      - /home/amatsus/rpmbuild:/home/amatsus/rpmbuild
+    user: amatsus
+    privileged: true
+    environment:
+      - TZ=Asia/Tokyo
+    hostname: rpmbuild
+    domainname: ad62.riken.go.jp
